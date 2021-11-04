@@ -1,2 +1,2 @@
-# projektowanie
-projektowanie
+# programowanie
+programowane
