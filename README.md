@@ -1,2 +1,2 @@
 # programowanie
-programowane
+min/max
