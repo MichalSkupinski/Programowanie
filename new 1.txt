@@ -1,0 +1,71 @@
+#include "pch.h"
+#include <iostream>
+#include <vector>
+void wypisz(int a)
+{
+	std::cout << a << "\n";
+}
+int suma(int a, int b)
+{
+	return(a + b);
+}
+void wypisz(std::vector<int>tab)
+{
+	std::cout << tab[0] << ",";
+}
+bool Czynalezy(std::vector<int>tab, int element)
+{
+	for (int i = 0; i < tab.size(); i++)
+	{
+		if (tab[i] == element)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+bool CzyZawiera(std::vector<int>tab, std::vector<int>podzbior)
+{
+	for (int i = 0; i < podzbior.size(); i++)
+	{
+		if (!Czynalezy(tab,podzbior[i]))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+
+
+
+int min(std::vector<int>tab)
+{
+	int wynik = tab[0];
+	for (int i = 0; i < tab.size(); i++)
+	{
+		if (tab[i] < wynik)
+		{
+			wynik = tab[i];
+		}
+	}
+	return wynik;
+} 
+
+
+
+
+int main()
+{
+    std::cout << "Hello World!\n"; 
+	int a = 5;
+	int b = 7;
+	std::vector<int>tab = { 1,2,3,4,5,6 };
+	wypisz(tab);
+	bool c Czynalezy = { 4,5 };
+	wypisz(c);
+	std::vector<int>podzbior = { 4,5 };
+	bool v CzyZawiera(tab.podzbior);
+	wypisz(v);
+
+}
