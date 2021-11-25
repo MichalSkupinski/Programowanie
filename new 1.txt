@@ -69,3 +69,22 @@ int main()
 	wypisz(v);
 
 }
+vector<vector<int>>czestosc(vector<int>tab)
+{
+	vector<vector<int>>wynik;
+	vector<int>u = unikalnosc(tab);
+	vector<int>e; int licznik = 0;
+	for (int i = 0; i < u.size(); i++)
+	{
+		int licznik = 0;
+		for (int j = 0; j < u.size(); j++)
+		{
+			if (u[i] == tab[j])
+			{
+				licznik++;
+			}
+		}
+		wynik.push_back(u);
+		wynik.push_back(c);
+		return wynik;
+}
