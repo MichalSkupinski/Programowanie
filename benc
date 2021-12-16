@@ -1,0 +1,312 @@
+#include "pch.h"
+#include <iostream>
+#include<vector>
+#include<map>
+#include <stdlib.h>
+#include <time.h>
+
+using namespace std;
+//lekcja 1
+void wypisz(int a)
+{
+	std::cout << a << "\n";
+}
+void wypisz(std::vector<int> tab)
+{
+	for (int i = 0; i < tab.size(); i++)
+	{
+		std::cout << tab[i] << " ";
+	}
+	std::cout << "\n";
+}
+int suma(int a, int b)
+{
+	return a + b;
+}
+//lekcja 2
+bool czynalezy(std::vector<int> tab, int element)
+{
+	for (int i = 0; i < tab.size(); i++)
+	{
+		if (tab[i] == element)
+		{
+			return true;
+		}
+
+	}
+	return false;
+}
+bool czyzawiera(vector<int>tab, vector<int>podzbior)
+{
+	for (int i = 0; i < podzbior.size(); i++)
+	{
+		if (!czynalezy(tab, podzbior[i]))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+//lekcja 3
+int minimum(vector<int> tab)
+{
+	int min = tab[0];
+	for (int i = 0; i < tab.size(); i++)
+	{
+		if (min > tab[i])
+		{
+			min = tab[i];
+		}
+	}
+	return min;
+}
+int maksimum(vector<int> tab)
+{
+	int max = tab[0];
+	for (int i = 0; i < tab.size(); i++)
+	{
+		if (max < tab[i])
+		{
+			max = tab[i];
+		}
+	}
+	return max;
+}
+//lekcja4
+vector<int>unikalny(vector<int>tab)
+{
+	vector<int> wynik;
+	for (int i = 0; i < tab.size(); i++)
+	{
+		if (!czynalezy(wynik, tab[i]))
+		{
+			wynik.push_back(tab[i]);
+		}
+	}
+	return wynik;
+}
+//lekcja5
+vector<vector<int>>ileczego(vector<int>tab)
+{
+	std::vector<std::vector<int>>wynik;
+	std::vector<int>u = unikalny(tab);
+	std::vector<int>c;
+	int licznik = 0;
+	for (int i = 0; i < u.size(); i++)
+	{
+		licznik = 0;
+		int element = u[i];
+		for (int j = 0; j < tab.size(); j++)
+		{
+			if (element == tab[j])
+			{
+				licznik++;
+			}
+
+		}
+		c.push_back(licznik);
+	}
+	wynik.push_back(u);
+	wynik.push_back(c);
+	return wynik;
+}
+void wypisz(vector<vector<int>>lalalaa)
+{
+
+	for (int i = 0; i < lalalaa.size(); i++)
+	{
+		for (int j = 0; j < lalalaa[i].size(); j++)
+		{
+			cout << lalalaa[i][j] << endl;
+		}
+	}
+
+}
+//lekcja6
+bool czynalezyklucz(map<int, int>m, int klucz)
+{
+	for (auto item : m)
+	{
+		if (item.first == klucz)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+map<int, int>czestosc(vector<int>tab)
+{
+	map<int, int>wynik;
+	for (int i = 0; i < tab.size(); i++)
+	{
+		if (!czynalezyklucz(wynik, tab[i]))
+		{
+			wynik.insert({ tab[i],1 });
+		}
+		else
+		{
+			wynik[tab[i]]++;
+
+		}
+	}
+	return wynik;
+}
+
+//praca domowa1
+bool palindrom(vector<int>tab)
+{
+	int j = tab.size() - 1;
+	for (int i = 0; i < tab.size(); i++)
+	{
+		if (tab[i] != tab[j])
+		{
+			return false;
+		}
+		j--;
+		if (j <= i)
+		{
+			return true;
+		}
+	}
+	return true;
+}
+void wypisz(map<int, int>mapa)
+{
+
+	for (auto item : mapa)
+	{
+		cout << item.first << " " << item.second << endl;
+	}
+}
+//lekcja 7
+vector<int>podzielny(vector<int>tab,int dzielnik=50,int reszta=0)
+{
+	vector<int>wynik;
+	for (int i = 0; i < tab.size(); i++)
+	{
+		if (tab[i] % dzielnik == reszta)
+		{
+			wynik.push_back(tab[i]);
+		}
+	}
+	return wynik;
+}
+vector<int>generuj(int rozmiar, int wielkoscmax = 500, int wielkoscmin = 0)
+{
+	
+	vector<int>wynik;
+
+	for (int i = 0; i < rozmiar; i++)
+	{
+		int a = rand() % (wielkoscmax - wielkoscmin) + wielkoscmin;
+		wynik.push_back(a);
+	}
+
+	return wynik;
+}
+//lekcja 8 lekcja świąteczna
+int main()
+{srand(time(NULL));
+	cout << "LEKCJA 1" << endl;
+	cout << "=====================================================================" << endl;
+	std::cout << "Hello World!\n";
+	int a, b;
+	b = 10;
+	bool wynik;
+	std::vector<int> tab = { 1,3,5 };
+	a = suma(3, 5);
+	std::cout << a << "\n";
+	wypisz(b);
+	wypisz(tab);
+	wynik = czynalezy(tab, 3);
+	if (wynik == true)
+	{
+		std::cout << "nalezy" << "\n";
+
+	}
+	else
+	{
+		std::cout << "nienalezy" << "\n";
+	}
+	cout << endl;
+	cout << endl;
+	cout << "LEKCJA 2" << endl;
+	cout << "=====================================================================" << endl;
+
+	vector<int>podzbior = { 2,5 };
+	if (czyzawiera(tab, podzbior) == true)
+	{
+		cout << "zawiera" << endl;
+	}
+	else
+	{
+		cout << "niezawiera" << endl;
+	}
+	cout << endl;
+	cout << endl;
+	cout << "LEKCJA 3" << endl;
+	cout << "=====================================================================" << endl;
+
+	vector<int> tablica = { 2,4,6,1,11,9,0 };
+	cout << "minimum: " << minimum(tablica) << endl;
+	cout << "maksimum: " << maksimum(tablica) << endl;
+	cout << "LEKCJA 4" << endl;
+	cout << "=======================================================================" << endl;
+
+	vector<int> wyyn = unikalny(tab);
+	wypisz(wyyn);
+	cout << "LEKCJA 5" << endl;
+	cout << "=====================================================================" << endl;
+
+	vector<int>lalala = { 1,3,6,6,7 };
+	vector<vector<int>>lalalaa = ileczego(lalala);
+	wypisz(lalalaa);
+
+	cout << "LEKCJA 6" << endl;
+	cout << "=====================================================================" << endl;
+	if (palindrom(lalala) == true)
+	{
+		cout << "palindrom" << endl;
+	}
+	else
+	{
+		cout << "nie palindrom" << endl;
+	}
+	map<int, int>mapka = czestosc(lalala);
+	wypisz(mapka);
+
+	cout << "LEKCJA 7" << endl;
+	cout << "=====================================================================" << endl;
+	vector<int>przeztrzy = { 3,5,9,7,2,4 };
+	vector<int>wynn = podzielny(przeztrzy);
+	wypisz(wynn);
+
+	vector<int>los = generuj(20,1000,0);
+	wypisz(los);
+
+	cout << "LEKCJA 8" << endl;
+	cout << "=====================================================================" << endl;
+
+	//cin >> a >> b;
+	//vector<int>gen=generuj(a);
+	//vector<int>podz = podzielny(gen,b);
+	//cout << podz.size() << endl; //ile jest liczb podzielnych
+	//wypisz(podz);
+
+	int ilegwiazd;
+	cin >> ilegwiazd;
+	for (int i = 1; i< ilegwiazd; i++)
+	{
+		i = i * 2 - 1;
+		for (int j = 0; j < i; j++)
+		{
+			cout << "*";
+		}
+		cout << endl;
+	}
+
+	
+
+
+
+}
